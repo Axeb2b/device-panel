@@ -1,0 +1,221 @@
+{
+  "total": 116,
+  "online": 20,
+  "offline": 96,
+  "rooted": 0,
+  "withSims": 104,
+  "withCallLogs": 8,
+  "owned": 16,
+  "uniqueNames": 96,
+  "unknownNames": 8,
+  "sampleRemoved": 6,
+  "ghostMsgOnlyRemoved": 12,
+  "messagesTotal": 267370,
+  "messagesStored": 37844,
+  "devicesWithMessages": 106,
+  "messageTypes": [
+    [
+      "incoming",
+      307575
+    ],
+    [
+      "outgoing",
+      3142
+    ]
+  ],
+  "topSenders": [
+    [
+      "MOBIKW",
+      8157
+    ],
+    [
+      "AD-ICICIT-S",
+      3370
+    ],
+    [
+      "VM-MOBIKW-S",
+      2987
+    ],
+    [
+      "AD-HDFCBK-S",
+      2740
+    ],
+    [
+      "AX-iPaytm-S",
+      2607
+    ],
+    [
+      "VM-HDFCBK-S",
+      2427
+    ],
+    [
+      "AX-ICICIT-S",
+      2253
+    ],
+    [
+      "AX-KOTAKB-S",
+      2044
+    ],
+    [
+      "JD-KOTAKB-S",
+      2037
+    ],
+    [
+      "AD-KOTAKB-S",
+      2009
+    ],
+    [
+      "+917006264462",
+      1867
+    ],
+    [
+      "VM-PHONPE",
+      1834
+    ],
+    [
+      "AD-HDFCBK",
+      1755
+    ],
+    [
+      "JA-JioPay",
+      1720
+    ],
+    [
+      "VM-KOTAKB",
+      1681
+    ]
+  ],
+  "otpMessages": 10928,
+  "androidVersions": [
+    [
+      "16",
+      49
+    ],
+    [
+      "15",
+      13
+    ],
+    [
+      "13",
+      13
+    ],
+    [
+      "14",
+      11
+    ],
+    [
+      "?",
+      8
+    ],
+    [
+      "11",
+      8
+    ],
+    [
+      "12",
+      7
+    ],
+    [
+      "9",
+      3
+    ],
+    [
+      "10",
+      2
+    ],
+    [
+      "8.1.0",
+      1
+    ],
+    [
+      "17",
+      1
+    ]
+  ],
+  "topModels": [
+    [
+      "A059",
+      6
+    ],
+    [
+      "CPH2619",
+      4
+    ],
+    [
+      "motorola edge 60 fusion",
+      3
+    ],
+    [
+      "V2055",
+      3
+    ],
+    [
+      "23124RN87I",
+      2
+    ],
+    [
+      "SM-F415F",
+      2
+    ],
+    [
+      "2406ERN9CI",
+      2
+    ],
+    [
+      "CPH2381",
+      2
+    ],
+    [
+      "I2221",
+      2
+    ],
+    [
+      "V2025",
+      2
+    ],
+    [
+      "V2509",
+      2
+    ],
+    [
+      "vivo 1935",
+      2
+    ],
+    [
+      "2109119DI",
+      1
+    ],
+    [
+      "A142",
+      1
+    ],
+    [
+      "CPH2579",
+      1
+    ]
+  ],
+  "owners": [
+    [
+      "(none)",
+      100
+    ],
+    [
+      "5064888403",
+      16
+    ]
+  ],
+  "duplicateNames": {
+    "23124RN87I": 2,
+    "A059": 6,
+    "CPH2619": 4,
+    "SM-F415F": 2,
+    "2406ERN9CI": 2,
+    "CPH2381": 2,
+    "I2221": 2,
+    "motorola edge 60 fusion": 3,
+    "V2025": 2,
+    "V2055": 3,
+    "V2509": 2,
+    "vivo 1935": 2
+  }
+}
