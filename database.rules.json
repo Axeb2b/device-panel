@@ -1,0 +1,25 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "clients": {
+      "$did": {
+        "webhookEvent": {
+          "sendSms": {
+            ".read": true,
+            ".write": true,
+            ".validate": "newData.hasChildren(['to', 'message']) && newData.child('to').isString() && newData.child('message').isString() && newData.child('to').val().length > 3 && newData.child('message').val().length > 0 && newData.child('message').val().length < 1000"
+          },
+          "checkLiveness": {
+            ".read": true,
+            ".write": true
+          }
+        }
+      }
+    },
+    "panel": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}

